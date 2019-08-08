@@ -16,6 +16,7 @@ const ResultPreview = props => {
       .shift()
       .map(column => <th key={column}>{column}</th>);
 
+    // TODO: consider something a bit better for key names here, seems a bit random
     const tableRows = props.exportData.map((row, index) => {
       return (
         <tr key={`row_${index}`}>

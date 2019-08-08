@@ -56,8 +56,17 @@ export default class App extends React.Component {
     const reader = new FileReader();
     reader.readAsText(this.state.inputFile);
     reader.addEventListener('loadend', () => {
-      const data = CSV.parse(reader.result);
-      this.setState({ exportData: data });
+      const inputRows = CSV.parse(reader.result);
+      inputRows.shift();
+
+      const convertedRows = [];
+      // TODO: need to create a method that will return an array of values based on the schema
+      // const convertedRows = inputRows.map(row => {
+      //   return []
+      // });
+      convertedRows.unshift(SCHEMAS[this.state.schema].headers);
+
+      this.setState({ exportData: convertedRows });
     });
 
     this.setState({ converting: false });
@@ -70,6 +79,9 @@ export default class App extends React.Component {
           schemas={SCHEMAS}
           onSchemaSelected={this.onSchemaSelected}
           onFileUpload={this.onFileUpload}
+          disableExportDownload={
+            this.state.calculating || this.state.exportData.length === 0
+          }
         >
           <ResultPreview
             exportData={this.state.exportData}

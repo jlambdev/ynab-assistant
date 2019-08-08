@@ -39,8 +39,12 @@ const ConvertForm = props => {
           </Files>
         </div>
 
+        {/* TODO: add react-csv link here to download */}
         <div className="ui raised very padded container segment column">
-          <button className="ui basic button" disabled>
+          <button
+            className="ui basic button"
+            disabled={props.disableExportDownload}
+          >
             <i className="icon cloud download" />
             Export to CSV
           </button>
