@@ -3,26 +3,35 @@ import React from 'react';
 const ResultPreview = props => {
   if (props.converting) {
     return (
-      <div class="ui active inverted dimmer">
-        <div class="ui text loader">Converting...</div>
+      <div className="ui active inverted dimmer">
+        <div className="ui text loader">Converting...</div>
       </div>
     );
   } else {
     if (!props.exportData.length) {
       return <div>Please select a Schema and File</div>;
     }
+
+    const headerRow = props.exportData
+      .shift()
+      .map(column => <th key={column}>{column}</th>);
+
+    const tableRows = props.exportData.map((row, index) => {
+      return (
+        <tr key={`row_${index}`}>
+          {row.map(data => (
+            <td key={`${index}_${data}`}>{data}</td>
+          ))}
+        </tr>
+      );
+    });
+
     return (
-      <table class="ui celled table">
+      <table className="ui celled table">
         <thead>
-          <tr>
-            <th>Desc</th>
-          </tr>
+          <tr>{headerRow}</tr>
         </thead>
-        <tbody>
-          <tr>
-            <td data-label="Desc">Description</td>
-          </tr>
-        </tbody>
+        <tbody>{tableRows}</tbody>
       </table>
     );
   }

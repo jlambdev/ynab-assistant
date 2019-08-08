@@ -1,4 +1,5 @@
 import React from 'react';
+import * as CSV from 'csv-string/';
 import ConvertForm from './ConvertForm';
 import ResultPreview from './ResultPreview';
 
@@ -55,9 +56,8 @@ export default class App extends React.Component {
     const reader = new FileReader();
     reader.readAsText(this.state.inputFile);
     reader.addEventListener('loadend', () => {
-      // TODO: do the conversion here and refactor later
-
-      console.log(reader.result);
+      const data = CSV.parse(reader.result);
+      this.setState({ exportData: data });
     });
 
     this.setState({ converting: false });

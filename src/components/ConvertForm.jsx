@@ -40,7 +40,7 @@ const ConvertForm = props => {
         </div>
 
         <div className="ui raised very padded container segment column">
-          <button className="ui basic button">
+          <button className="ui basic button" disabled>
             <i className="icon cloud download" />
             Export to CSV
           </button>
