@@ -2,6 +2,14 @@ import React from 'react';
 import Files from 'react-files';
 
 const ConvertForm = props => {
+  const schemaOptions = Object.keys(props.schemas).map(schema => {
+    return (
+      <option key={schema} value={schema}>
+        {schema.toUpperCase()}
+      </option>
+    );
+  });
+
   return (
     <div>
       <div className="ui raised very padded container segment">
@@ -11,17 +19,15 @@ const ConvertForm = props => {
           onChange={e => props.onSchemaSelected(e.target.value)}
         >
           <option value="">Select Import Schema</option>
-          <option value="n26">N26</option>
-          <option value="lloyds">Lloyds</option>
-          <option value="monzo">Monzo</option>
+          {schemaOptions}
         </select>
       </div>
 
       <div className="ui two column grid container">
         <div className="ui raised very padded container segment column">
           <Files
-            onChange={e => props.onFileUpload(e)}
-            onError={e => console.log(e)}
+            onChange={files => props.onFileUpload(files)}
+            onError={err => console.error(err)}
             accepts={['.csv']}
             maxFileSize={10000000}
             minFileSize={0}

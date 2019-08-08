@@ -8,10 +8,22 @@ const ResultPreview = props => {
       </div>
     );
   } else {
+    if (!props.exportData.length) {
+      return <div>Please select a Schema and File</div>;
+    }
     return (
-      <div>
-        <h4>Result Preview</h4>
-      </div>
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th>Desc</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Desc">Description</td>
+          </tr>
+        </tbody>
+      </table>
     );
   }
 };
