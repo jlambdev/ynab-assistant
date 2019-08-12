@@ -1,5 +1,6 @@
 import React from 'react';
 import Files from 'react-files';
+import { CSVLink } from 'react-csv';
 
 const ConvertForm = props => {
   const schemaOptions = Object.keys(props.schemas).map(schema => {
@@ -39,15 +40,20 @@ const ConvertForm = props => {
           </Files>
         </div>
 
-        {/* TODO: add react-csv link here to download */}
         <div className="ui raised very padded container segment column">
-          <button
-            className="ui basic button"
-            disabled={props.disableExportDownload}
+          <CSVLink
+            data={props.exportData}
+            separator={','}
+            filename="YNAB_import"
           >
-            <i className="icon cloud download" />
-            Export to CSV
-          </button>
+            <button
+              className="ui basic button"
+              disabled={props.disableExportDownload}
+            >
+              <i className="icon cloud download" />
+              Export to CSV
+            </button>
+          </CSVLink>
         </div>
       </div>
 

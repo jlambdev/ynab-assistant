@@ -1,53 +1,22 @@
 import React from 'react';
 import * as CSV from 'csv-string/';
+import { SCHEMAS } from '../utils/constants';
+import { convert } from '../utils/convert';
 import ConvertForm from './ConvertForm';
 import ResultPreview from './ResultPreview';
-
-// TODO: consider factoring out constants
-const DATE = 'Date',
-  DESCRIPTION = 'Description',
-  OUTFLOW = 'Outflow',
-  INFLOW = 'Inflow',
-  AMOUNT = 'Amount',
-  SCHEMAS = {
-    n26: {
-      path: 'n26_import.csv',
-      headers: [DATE, DESCRIPTION, AMOUNT]
-    },
-    lloyds: {
-      path: 'lloyds_import.csv',
-      headers: [DATE, DESCRIPTION, OUTFLOW, INFLOW]
-    },
-    monzo: {
-      path: 'monzo_import.csv',
-      headers: [DATE, DESCRIPTION, AMOUNT]
-    }
-  };
 
 export default class App extends React.Component {
   state = { schema: '', inputFile: null, exportData: [], converting: false };
 
   onSchemaSelected = schema => {
     this.setState({ schema });
-    if (this.shouldConvertImportedData(schema, this.state.inputFile)) {
-      this.convertImportedData();
-    }
   };
 
   onFileUpload = async files => {
     await this.setState({ inputFile: files[files.length - 1] });
-    if (
-      this.shouldConvertImportedData(this.state.schema, files[files.length - 1])
-    ) {
+    if (!!this.state.inputFile) {
       this.convertImportedData();
     }
-  };
-
-  // TODO: consider only doing conversion when new file is uploaded
-  shouldConvertImportedData = (schema, file) => {
-    const schemaChanged = schema !== '' || this.state.schema !== schema;
-    const inputFileChanged = this.state.inputFile !== file;
-    return !!file && (schemaChanged || inputFileChanged);
   };
 
   convertImportedData = () => {
@@ -56,16 +25,10 @@ export default class App extends React.Component {
     const reader = new FileReader();
     reader.readAsText(this.state.inputFile);
     reader.addEventListener('loadend', () => {
-      const inputRows = CSV.parse(reader.result);
-      inputRows.shift();
-
-      const convertedRows = [];
-      // TODO: need to create a method that will return an array of values based on the schema
-      // const convertedRows = inputRows.map(row => {
-      //   return []
-      // });
-      convertedRows.unshift(SCHEMAS[this.state.schema].headers);
-
+      const convertedRows = convert(
+        CSV.parse(reader.result),
+        SCHEMAS[this.state.schema]
+      );
       this.setState({ exportData: convertedRows });
     });
 
@@ -82,6 +45,7 @@ export default class App extends React.Component {
           disableExportDownload={
             this.state.calculating || this.state.exportData.length === 0
           }
+          exportData={this.state.exportData}
         >
           <ResultPreview
             exportData={this.state.exportData}
