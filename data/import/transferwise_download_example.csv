@@ -1,0 +1,5 @@
+"TransferWise ID",Date,Amount,Currency,Description,"Payment Reference","Running Balance","Exchange From","Exchange To","Exchange Rate","Payer Name","Payee Name","Payee Account Number",Merchant,"Total fees"
+BALANCE-49948518,03-10-2019,-458.70,EUR,"Converted 458.70 EUR to 500.00 USD",,541.30,EUR,USD,1.09450,,,,,1.87
+TRANSFER-96457204,03-10-2019,1000.00,EUR,"Received money from Dave with reference Heres a reference","EREF+d03fd58a33004bebba9eb1 cc1189a8f9 SVWZ+Student Loan / Egypt",1000.00,,,,"Jonathan Lamb",,,,0.00
+BALANCE-46752034,15-09-2019,-599.60,EUR,"Converted 599.60 EUR to 529.02 GBP",,0.00,EUR,GBP,0.88590,,,,,2.45
+TRANSFER-91791067,05-09-2019,544.31,EUR,"Received money from Steve with reference Heres another reference","EREF+6c68b41dbc8a42e697a5db 0744526c28 SVWZ+SLC",599.60,,,,"Jonathan Lamb",,,,0.00
