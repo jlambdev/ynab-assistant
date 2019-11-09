@@ -17,10 +17,8 @@ A React Single Page Application to:
     3. Convert CSVs (may need to cut from a certain date)
     4. (YNAB API?) Upload to YNAB
     5. (YNAB API?) Confirm budget balances match account balances
--   Consider integrating Circle CI, ESLint etc.
-    -   https://github.com/typescript-eslint/typescript-eslint
+-   Consider integrating Circle CI
 -   Make repository public
--   Consider migrating to Typescript
 
 ## Resources
 
