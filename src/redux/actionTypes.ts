@@ -1,0 +1,3 @@
+export const YNAB_DATA = 'YNAB_DATA_REQUEST';
+export const YNAB_DATA_SUCCESS = 'YNAB_DATA_REQUEST';
+export const YNAB_DATA_FAIL = 'YNAB_DATA_REQUEST';

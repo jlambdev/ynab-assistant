@@ -25,10 +25,13 @@ module.exports = {
     },
     plugins: ['react-hooks', 'jest'],
     rules: {
-        'react-hooks/rules-of-hooks': 'error',
-        'react-hooks/exhaustive-deps': 'warn',
         '@typescript-eslint/no-angle-bracket-type-assertion': 'off',
         'import/prefer-default-export': 'off',
+
+        'react/jsx-indent': ['warn', 4],
+        'react-hooks/rules-of-hooks': 'error',
+        'react-hooks/exhaustive-deps': 'warn',
+
         'jest/prefer-expect-assertions': 'off',
     },
     settings: {
