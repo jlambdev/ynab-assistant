@@ -7,7 +7,7 @@ const Button = styled.button`
     padding: 0.25em 1em;
     border: 2px solid lightskyblue;
     border-radius: 3px;
-    transition: background-color 0.1s linear;
+    transition: background-color 0.1s, color 0.1s;
 
     :focus {
         outline: 0;
