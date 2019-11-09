@@ -18,6 +18,7 @@ A React Single Page Application to:
     4. (YNAB API?) Upload to YNAB
     5. (YNAB API?) Confirm budget balances match account balances
 -   Consider integrating Circle CI, ESLint etc.
+    -   https://github.com/typescript-eslint/typescript-eslint
 -   Make repository public
 -   Consider migrating to Typescript
 

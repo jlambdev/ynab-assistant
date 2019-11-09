@@ -1,7 +1,5 @@
-import React from "react";
+import React from 'react';
 
-export default class App extends React.Component {
-    render() {
-        return <div>Rewriting application...</div>;
-    }
+export default function App(): JSX.Element {
+    return <div>Rewriting application...</div>;
 }
