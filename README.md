@@ -29,7 +29,3 @@ A React Single Page Application to:
     -   advice is to reduce the load on the API server - cache, delta, plan for faults (errors / outages) and be specific with requests
     -   think about handling each of the http status codes here https://api.youneedabudget.com/#errors
     -   API uses UTC as the timezone
-
-### YNAB API call examples
-
--   curl -H "Authorization: Bearer <personal_access_token>" https://api.youneedabudget.com/v1/budgets

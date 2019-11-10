@@ -1,7 +1,19 @@
-import { createStore } from 'redux';
-import { devToolsEnhancer } from 'redux-devtools-extension';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
 
 import reducer from './reducer';
 import { initialState } from './state';
+import rootSaga from './sagas';
 
-export default createStore(reducer, initialState, devToolsEnhancer({}));
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(
+    reducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(sagaMiddleware)),
+);
+
+sagaMiddleware.run(rootSaga);
+
+export default store;
