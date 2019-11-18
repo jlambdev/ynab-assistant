@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 
-import App from './App';
+import App from '../App';
 
 describe('main application', () => {
     it('should render without crashing', () => {
