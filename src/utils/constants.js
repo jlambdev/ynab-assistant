@@ -24,5 +24,11 @@ export const DATE = "Date",
       path: "YNAB_transferwise.csv",
       headers: [DATE, DESCRIPTION, AMOUNT],
       columnMap: [1, 4, 2]
+    },
+    revolut: {
+      path: "YNAB_revolut.csv",
+      headers: [DATE, DESCRIPTION, OUTFLOW, INFLOW],
+      columnMap: [0, 1, 2, 3],
+      formatDate: true
     }
   };
