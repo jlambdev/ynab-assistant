@@ -17,7 +17,7 @@ export const DATE = "Date",
         monzo: {
             path: "YNAB_monzo.csv",
             headers: [DATE, DESCRIPTION, AMOUNT],
-            columnMap: [1, 5, 7],
+            columnMap: [1, 4, 7],
             trimDate: true
         },
         transferwise: {
