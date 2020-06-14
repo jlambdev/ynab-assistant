@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-// TODO: dynamic loading of schemas
 function SelectSchema({ schema, onSchemaChange }: Props) {
     const classes = useStyles();
 
