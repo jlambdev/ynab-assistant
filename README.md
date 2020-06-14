@@ -6,6 +6,7 @@ A simple CSV file conversion tool. Transactions CSVs from UK/European banks can 
 
 ### 0.2.0
 
+-   CI with GitHub actions
 -   Migrated to Typescript
 -   Page structure cleanup
 -   Introduced material-ui dependency (design system)
@@ -17,7 +18,7 @@ A simple CSV file conversion tool. Transactions CSVs from UK/European banks can 
 
 ## Future considerations
 
--   CI with GitHub actions
+-   remove obsolete dependencies
 -   add Renovate for deps management
 -   Complete Revolut conversion example
 -   Provide option to directly upload to YNAB
