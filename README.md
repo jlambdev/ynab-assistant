@@ -1,5 +1,7 @@
 # YNAB Assistant
 
+![Node.js CI](https://github.com/jlambdev/ynab-assistant/workflows/Node.js%20CI/badge.svg)
+
 A simple CSV file conversion tool. Transactions CSVs from UK/European banks can be converted to an import format accepted by YNAB.
 
 ## Versions
