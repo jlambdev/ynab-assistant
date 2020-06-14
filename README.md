@@ -1,21 +1,25 @@
 # YNAB Assistant
 
-Work in progress. Bootstrapped with Create React App.
+A simple CSV file conversion tool. Transactions CSVs from UK/European banks can be converted to an import format accepted by YNAB.
 
-A React Single Page Application to:
+## Versions
 
--   Convert CSV files of transactions to a format that can be uploaded to the You Need A Budget web application.
--   Create YNAB CSV import files manually (pending future requirement).
+### 0.2.0
 
-## Resources
+-   Migrated to Typescript
+-   Page structure cleanup
+-   Introduced material-ui dependency (design system)
 
-Mockups created with [MockFlow](https://www.mockflow.com/). Note: these are out of date.
+### 0.1.0
 
-## Future consideration
+-   Basic but functional CSV conversion for some UK/Eurpoean bank accounts
+-   Initial mockups for creating CSVs, uploading etc. (archived)
 
+## Future considerations
+
+-   CI with GitHub actions
+-   add Renovate for deps management
 -   Complete Revolut conversion example
--   Convert to Typescript
--   Make UI Cleaner
 -   Provide option to directly upload to YNAB
 -   Use YNAB API to fetch last updated date
 -   Automation if CSV is sent via email?

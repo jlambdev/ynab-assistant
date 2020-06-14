@@ -1,35 +1,45 @@
 {
-  "name": "ynab-assistant",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "csv-string": "^3.1.6",
-    "moment": "^2.24.0",
-    "react": "^16.8.6",
-    "react-csv": "^1.1.1",
-    "react-dom": "^16.8.6",
-    "react-files": "^2.4.8",
-    "react-scripts": "3.0.1"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "name": "ynab-assistant",
+    "version": "0.2.0",
+    "private": true,
+    "devDependencies": {
+        "@material-ui/core": "^4.10.2",
+        "@types/enzyme": "^3.10.5",
+        "@types/enzyme-adapter-react-16": "^1.0.6",
+        "@types/jest": "^26.0.0",
+        "@types/react-dom": "^16.9.8",
+        "csv-string": "^3.1.6",
+        "enzyme": "^3.11.0",
+        "enzyme-adapter-react-16": "^1.15.2",
+        "jest-enzyme": "^7.1.2",
+        "moment": "^2.24.0",
+        "react": "^16.8.6",
+        "react-csv": "^1.1.1",
+        "react-dom": "^16.8.6",
+        "react-files": "^2.4.8",
+        "react-scripts": "3.0.1",
+        "typescript": "^3.9.5"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "test-ci": "CI=true react-scripts test --runInBand",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
 }
