@@ -1,7 +1,9 @@
 import { stripHeaderRow, prependHeaderRow, trimDate, formatDate, convertRow, convert } from './convert';
 import { SCHEMAS } from './constants';
 
-describe.skip('convert: individual methods', () => {
+jest.spyOn(console, 'warn').mockImplementation(() => {});
+
+describe('convert: individual methods', () => {
     test('stripHeaderRow', () => {
         const input = [
             ['Date', 'Description', 'Amount'],
@@ -59,7 +61,7 @@ describe.skip('convert: individual methods', () => {
     });
 });
 
-describe.skip('convert: combined examples', () => {
+describe('convert: combined examples', () => {
     test('lloyds example', () => {
         const schema = SCHEMAS.lloyds;
         const input = [

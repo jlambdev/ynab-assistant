@@ -6,6 +6,8 @@ import { App } from '../App';
 import { Controls } from '../Controls';
 import { Preview } from '../Preview';
 
+jest.spyOn(console, 'warn').mockImplementation(() => {});
+
 describe('src/App', () => {
     it('renders to the DOM without crashing', () => {
         const div = document.createElement('div');

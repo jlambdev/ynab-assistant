@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-// TODO: dynamic loading of schemas
 function SelectSchema({ schema, onSchemaChange }: Props) {
     const classes = useStyles();
 
@@ -42,6 +41,9 @@ function SelectSchema({ schema, onSchemaChange }: Props) {
             >
                 <MenuItem value="n26">N26</MenuItem>
                 <MenuItem value="lloyds">Lloyds</MenuItem>
+                <MenuItem value="monzo">Monzo</MenuItem>
+                <MenuItem value="transferwise">Transferwise</MenuItem>
+                <MenuItem value="revolut">Revolut</MenuItem>
             </Select>
         </FormControl>
     );
