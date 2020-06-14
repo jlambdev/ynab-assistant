@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
 function App() {
     const classes = useStyles();
     const [schema, setSchema] = useState<string>('');
-    const [exportData, setExportData] = useState<[]>([]);
+    const [exportData, setExportData] = useState<string[][]>([]);
 
     const onSchemaChange = (schema: string) => {
         setExportData([]);
