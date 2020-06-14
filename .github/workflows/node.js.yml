@@ -4,29 +4,28 @@
 name: Node.js CI
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
 
 jobs:
-  build:
+    build:
+        runs-on: ubuntu-latest
 
-    runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
 
-    strategy:
-      matrix:
-        node-version: [12.x, 13.x]
+            - name: Use Node.js 13.x
+              uses: actions/setup-node@v1
+              with:
+                  node-version: '13.x'
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: Install dependencies
-      run: yarn --frozen-lockfile
-    - name: Build
-      run: yarn build
-    - name: Test
-      run: yarn test
+            - name: Install dependencies
+              run: yarn --frozen-lockfile
+
+            - name: Build
+              run: yarn build
+
+            - name: Test
+              run: yarn test-ci
