@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
+// @ts-ignore
+import Files from 'react-files';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+
+interface Props {
+    enabled: boolean;
+    onFileUpload: Function;
+}
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -12,26 +19,26 @@ const useStyles = makeStyles((theme: Theme) =>
         input: {
             display: 'none',
         },
-        button: {
-            padding: theme.spacing(2),
-            textTransform: 'none',
-        },
     }),
 );
 
-// TODO: disable button and input if nothing has been uploaded
-// TODO: consider using 'react-files' import for DnD, clean management, onError handling
-function UploadFile() {
+function UploadFile({ enabled, onFileUpload }: Props) {
     const classes = useStyles();
 
     return (
         <div className={classes.root}>
-            <input accept=".csv" className={classes.input} id="upload-csv-button" type="file" />
-            <label htmlFor="upload-csv-button">
-                <Button variant="contained" component="span" className={classes.button}>
+            <Files
+                onChange={(files: FormEvent) => onFileUpload(files)}
+                onError={(error: Error) => console.error(error)}
+                accepts={['.csv']}
+                maxFileSize={10000000}
+                minFileSize={0}
+                clickable={enabled}
+            >
+                <Button variant="contained" component="span" disabled={!enabled}>
                     Upload CSV
                 </Button>
-            </label>
+            </Files>
         </div>
     );
 }

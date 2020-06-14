@@ -1,9 +1,14 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+
+interface Props {
+    schema: string;
+    onSchemaChange: Function;
+}
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -17,14 +22,12 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-// TODO: push state up so flow can be triggered, consider using React context to avoid prop drilling
 // TODO: dynamic loading of schemas
-function SelectSchema() {
+function SelectSchema({ schema, onSchemaChange }: Props) {
     const classes = useStyles();
-    const [schema, setSchema] = useState('');
 
     const handleSchemaChange = (event: ChangeEvent<{ value: unknown }>) => {
-        setSchema(event.target.value as string);
+        onSchemaChange(event.target.value as string);
     };
 
     return (
