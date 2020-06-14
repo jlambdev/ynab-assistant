@@ -6,6 +6,10 @@ A simple CSV file conversion tool. Transactions CSVs from UK/European banks can 
 
 ## Versions
 
+### 0.2.2
+
+-   Bump dependencies
+
 ### 0.2.1
 
 -   Finish conversion of utils to Typescript
