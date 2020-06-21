@@ -15,6 +15,9 @@ interface Props {
 
 const useStyles = makeStyles(() =>
     createStyles({
+        container: {
+            width: 'auto',
+        },
         alert: {
             width: 'fit-content',
         },
@@ -35,7 +38,7 @@ function Preview({ exportData }: Props) {
     const headerRow = exportData.shift();
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} className={classes.container}>
             <Table size="small">
                 <TableHead>
                     <TableRow>
