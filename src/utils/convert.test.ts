@@ -129,7 +129,7 @@ describe('convert: combined examples', () => {
                 'Edeka Kelz',
             ],
         ];
-        const expected = [SCHEMAS.monzo.headers, ['2020-02-02', 'STEAMGAMES.COM 4259522 Hamburg       DEU', '-14.99']];
+        const expected = [SCHEMAS.monzo.headers, ['02/02/2020', 'STEAMGAMES.COM 4259522 Hamburg       DEU', '-14.99']];
         const result = convert(input, schema);
         expect(result).toStrictEqual(expected);
     });
