@@ -44,6 +44,7 @@ function SelectSchema({ schema, onSchemaChange }: Props) {
                 <MenuItem value="monzo">Monzo</MenuItem>
                 <MenuItem value="transferwise">Transferwise</MenuItem>
                 <MenuItem value="revolut">Revolut</MenuItem>
+                <MenuItem value="dkb">DKB</MenuItem>
             </Select>
         </FormControl>
     );

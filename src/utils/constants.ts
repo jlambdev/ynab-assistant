@@ -1,5 +1,3 @@
-import { formatDate } from './convert';
-
 export const DATE = 'Date',
     DESCRIPTION = 'Description',
     OUTFLOW = 'Outflow',
