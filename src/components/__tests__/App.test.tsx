@@ -8,6 +8,10 @@ import { Preview } from '../Preview';
 
 jest.spyOn(console, 'warn').mockImplementation(() => {});
 
+/**
+ * Try migrating to react testing library
+ * https://testing-library.com/docs/react-testing-library/example-intro
+ */
 describe('src/App', () => {
     it('renders to the DOM without crashing', () => {
         const div = document.createElement('div');

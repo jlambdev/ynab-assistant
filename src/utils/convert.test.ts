@@ -1,4 +1,4 @@
-import { stripHeaderRow, prependHeaderRow, trimDate, formatDate, convertRow, convert } from './convert';
+import { stripHeaderRow, prependHeaderRow, trimDate, formatDate, convertRow, cropRows, convert } from './convert';
 import { SCHEMAS } from './constants';
 
 jest.spyOn(console, 'warn').mockImplementation(() => {});
@@ -58,6 +58,13 @@ describe('convert: individual methods', () => {
         const expected = ['2018-01-20 20:04:48 +0000', 'Headrow House', '-9.10'];
         const result = convertRow(row, columnMap);
         expect(result).toEqual(expected);
+    });
+
+    test('cropRows', () => {
+        const input = [['garbage'], ['garbage'], [''], ['garbage'], [''], ['01/01/2019', 'Purchase', '44.50']];
+        const expected = [['01/01/2019', 'Purchase', '44.50']];
+        const result = cropRows(input, 5);
+        expect(result).toStrictEqual(expected);
     });
 });
 
@@ -167,6 +174,35 @@ describe('convert: combined examples', () => {
             ['2019-12-30', 'Groupon Office', '44.90', ''],
             ['2019-12-25', 'Wöllhaf Retail GmbH', '4.70', ''],
             ['2019-12-22', 'Exchange EUR to  FX Rate €1 = £0.8473', '17.71', ''],
+        ];
+        const result = convert(input, schema);
+        expect(result).toStrictEqual(expected);
+    });
+
+    test('dkb example', () => {
+        const schema = SCHEMAS.dkb;
+        const input = [
+            ['Kreditkarte', '4445********7894'],
+            [''],
+            ['Zeitraum', 'aktuelles Jahr'],
+            ['Saldo', '8.89 EUR'],
+            ['Datum', '12.11.2020'],
+            [''],
+            [
+                'Umsatz abgerechnet und nicht im Saldo enthalten',
+                'Wertstellung',
+                'Belegdatum',
+                'Beschreibung',
+                'Betrag (EUR)',
+                'Urspr�nglicher Betrag',
+            ],
+            ['Nein', '12.11.2020', '11.11.2020', 'AMZN Mktp DE*M79UI3VZ4800-279-6620', '-408,19', ''],
+            ['Nein', '09.11.2020', '06.11.2020', 'POCO EINRICHTUNGSMAERKBERLIN', '-7,96', ''],
+        ];
+        const expected = [
+            schema.headers,
+            ['12.11.2020', 'AMZN Mktp DE*M79UI3VZ4800-279-6620', '-408,19'],
+            ['09.11.2020', 'POCO EINRICHTUNGSMAERKBERLIN', '-7,96'],
         ];
         const result = convert(input, schema);
         expect(result).toStrictEqual(expected);

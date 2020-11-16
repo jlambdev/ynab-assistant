@@ -1,3 +1,5 @@
+import { formatDate } from './convert';
+
 export const DATE = 'Date',
     DESCRIPTION = 'Description',
     OUTFLOW = 'Outflow',
@@ -29,5 +31,11 @@ export const DATE = 'Date',
             headers: [DATE, DESCRIPTION, OUTFLOW, INFLOW],
             columnMap: [0, 1, 2, 3],
             formatDate: true,
+        },
+        dkb: {
+            path: 'YNAB_dkb.csv',
+            headers: [DATE, DESCRIPTION, AMOUNT],
+            columnMap: [1, 3, 4],
+            cropRows: 6,
         },
     };

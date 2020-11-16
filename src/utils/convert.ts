@@ -6,6 +6,7 @@ interface Schema {
     columnMap: number[];
     trimDate?: boolean;
     formatDate?: boolean;
+    cropRows?: number;
 }
 
 export const stripHeaderRow = (input: string[][]) => input.shift();
@@ -16,13 +17,19 @@ export const trimDate = (date: string) => date.substring(0, 10);
 
 export const formatDate = (date: string) => moment(date).format('YYYY-MM-DD');
 
+export const cropRows = (input: string[][], cropBy: number) => input.slice(cropBy);
+
 export const convertRow = (row: string[], columns: number[]) => {
     return columns.map((columnNo) => row[columnNo]);
 };
 
 export const convert = (input: string[][], schema: Schema) => {
-    stripHeaderRow(input);
-    const convertedRows = input.map((row) => {
+    let modifiedInput = input;
+    if (schema.cropRows) {
+        modifiedInput = cropRows(input, schema.cropRows);
+    }
+    stripHeaderRow(modifiedInput);
+    const convertedRows = modifiedInput.map((row) => {
         const result = convertRow(row, schema.columnMap);
         if (schema.trimDate) {
             result[0] = trimDate(result[0]);
